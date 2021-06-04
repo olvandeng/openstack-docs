@@ -108,6 +108,14 @@ f5_ha_type = pair
 # default: 在现网中 neutron 任何 interface 下创建的 loadbalancer 或者 member 资源对应的网络配置，都默认配置在 bigip 的 RAg3 trunk 上
 f5_external_physical_mappings = f5network1:RAg3:True,default:RAg3:True
 
+# connection_limit_ratio是一个比例值。代表一个LB的最大的连接数与其下某listener的最大连接数的比例。
+# 当设置为5的时候，代表会配置listener的最大连接数为LB的最大连接数的1/5. 其中LB的最大连接数的限制值根据flavor而不同。
+connection_limit_ratio = 5
+
+# connection_rate_limit_ratio是一个比例值。代表一个LB的新建连接数与其下某listener的新建连接数的比例。
+# 当设置为5的时候，代表将配置listener的新建连接数为LB的新建连接数的1/5.其中LB的新建连接数的限制值根据flavor而不同。
+connection_rate_limit_ratio = 5
+
 # 此配置项一般配置成 False，建议保持默认配置
 f5_populate_static_arp = False
 
