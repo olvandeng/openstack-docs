@@ -163,6 +163,10 @@ f5_extended_profile = /etc/neutron/services/f5/f5-extended-profile.json
 # /Common/request-log 为BIG-IP上默认存在的logging profile。
 # 用户自己会负责创建logging profile，此配置会通知F5 Agent完成绑定关系。
 f5_request_logging_profile = /Common/request-log
+
+# > 9.8.47 版本，F5 agent 会定期保存由neutron侧下发的资源配置，即定期调用tmsh save sys config
+# 此参数控制定期保存的周期，默认60秒，当资源规模大时需要适当调整，例如 1200。
+config_save_interval = 60
 ```
 
 ## F5 agent 2.0 数据同步机制配置
