@@ -143,6 +143,9 @@ provider_name = 'CORE'
 # 开启 listener SANT pool 功能，并且定义每个 SNAT pool 中 member 个数。建议如果使用 SNAT pool，此值根据环境至少设置为 1。如果设置为 0，listener 为 auto SNAT 功能。
 f5_snat_addresses_per_subnet = 1
 
+# 用于配置 listener 绑定的 tcp profile 的 option kind 字段，source ip 会插入 TCP 包中插此字段指定的位置，此字段和 agent 的 TOA 功能相关，默认值是 254。
+tcp_options = 254
+
 # 现网暂时不会用到此功能，建议现网保持默认值 False
 f5_common_networks = False
 
