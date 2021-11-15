@@ -170,6 +170,9 @@ icontrol_password = a112312
 # F5 agent 3.0 在创建 listener 的时候可以通过此文件定制化 http/https profile 中参数。
 f5_extended_profile = /etc/neutron/services/f5/f5-extended-profile.json
 
+# 定义 TLS cipher suites 策略
+f5_cipher_policy = /etc/neutron/services/f5/f5-cipher-policy.json
+
 # >= 9.9.30 版本，用户创建Listener时，F5 Agent默认绑定request logging profile 到VS。
 # /Common/request-log 为BIG-IP上默认存在的logging profile。
 # 用户自己会负责创建logging profile，此配置会通知F5 Agent完成绑定关系。
