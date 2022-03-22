@@ -114,6 +114,11 @@ connection_limit_ratio = 5
 
 # connection_rate_limit_ratio是一个比例值。代表一个LB的新建连接数与其下某listener的新建连接数的比例。
 # 当设置为5的时候，代表将配置listener的新建连接数为LB的新建连接数的1/5.其中LB的新建连接数的限制值根据flavor而不同。
+
+# 2022-03: 按照最新提出的需求，当 Connection Rate Limit Mode 调整成了 Per Destination Address 的时候，
+# 应在配置文件里将此 connection_rate_limit_ratio 值设置为1.
+# 这意味着后续新创建的vs的新建连接数 与其对应LB的新建连接数 在数值上是相等的。(对应各flavor里的数值)
+# 可根据实际需求去调整这两个ratio比例值。
 connection_rate_limit_ratio = 5
 
 # 此配置项一般配置成 False，建议保持默认配置
