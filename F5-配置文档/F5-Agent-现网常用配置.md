@@ -166,6 +166,9 @@ f5_bigip_lbaas_device_driver = f5_openstack_agent.lbaasv2.drivers.bigip.icontrol
 # 配置 BIGIP 管理口地址。建议更具现网环境配置
 icontrol_hostname = 10.218.203.139,10.218.203.140
 
+# 配置 BIGIP 管理口端口，默认是 443
+icontrol_port = 443
+
 # 配置 BIGIP 管理员用户名。
 icontrol_username = admin
 
