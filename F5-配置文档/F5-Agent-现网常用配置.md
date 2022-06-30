@@ -73,6 +73,28 @@ to_speedup_populate_logic = true
 ...
 ```
 
+#### f5_loadbalancer_pool_scheduler_driver_v2
+
+`f5_loadbalancer_pool_scheduler_driver_v2` 用来指定F5插件调度agent的程序。如果需要使用availability zone调度等新的调度功能，请把此配置值填写为`f5lbaasdriver.v2.bigip.agent_scheduler.AgentSchedulerNG`；否则请保持先前的配置值。
+
+```ini
+[DEFAULT]
+...
+f5_loadbalancer_pool_scheduler_driver_v2 =
+...
+```
+
+#### agent_filters
+
+`agent_filters` 用来选择F5插件调度agent的功能。如果需要使用availability zone调度功能，请把此配置值填写为`AvailabilityZoneFilter,EnvironmentFilter,RandomFilter`。若`f5_loadbalancer_pool_scheduler_driver_v2`不是`f5lbaasdriver.v2.bigip.agent_scheduler.AgentSchedulerNG`，`agent_filters`配置不起作用。
+
+```ini
+[DEFAULT]
+...
+agent_filters = EnvironmentFilter,RandomFilter
+...
+```
+
 ## 现网环境 F5 lbaas agent 关键配置
 
 F5 的配置文件存在于 `/etc/neutron/services/f5/f5-openstack-agent.ini`中。
@@ -144,6 +166,9 @@ f5_snat_mode = True
 
 # 当同一个 tenant 使用同一个 subnet 在不同 provider 下创建 snat pool 时，需要配置当前 agent 所对应的 provider name，用于确保不同 provider 下 snat pool 中的 member ip 是不一样的。
 provider_name = 'CORE'
+
+# 此配置用来指定agent所在的availability zone。请根据实际情况设置。
+availability_zone =
 
 # 开启 listener SANT pool 功能，并且定义每个 SNAT pool 中 member 个数。建议如果使用 SNAT pool，此值根据环境至少设置为 1。如果设置为 0，listener 为 auto SNAT 功能。
 f5_snat_addresses_per_subnet = 1
